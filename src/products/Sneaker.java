@@ -1,21 +1,21 @@
-package san_pham;
+package products;
 
-public class Products {
+public class Sneaker {
     private String id;
     private String name;
-    private String color;
-    private String size;
+    private String brand;
     private int price;
+    private int amount;
 
-    public Products() {
+    public Sneaker() {
     }
 
-    public Products(String id, String name, String color, String size, int price) {
+    public Sneaker(String id, String name, String brand, int price, int amount) {
         this.id = id;
         this.name = name;
-        this.color = color;
-        this.size = size;
+        this.brand = brand;
         this.price = price;
+        this.amount = amount;
     }
 
     public String getId() {
@@ -34,20 +34,12 @@ public class Products {
         this.name = name;
     }
 
-    public String getColor() {
-        return color;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public int getPrice() {
@@ -58,14 +50,22 @@ public class Products {
         this.price = price;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     @Override
     public String toString() {
-        return "Products{" +
+        return "Sneaker{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", color='" + color + '\'' +
-                ", size='" + size + '\'' +
+                ", brand='" + brand + '\'' +
                 ", price=" + price +
+                ", amount=" + amount +
                 '}';
     }
 }
