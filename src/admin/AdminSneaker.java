@@ -35,15 +35,10 @@ public class AdminSneaker {
                        sneakerManager.show();
                         break;
                     case 2:
-                       try {
                            sneakerManager.add();
                            sc.nextLine();
                            System.out.println("Đã thêm thành công");
                            System.out.println();
-                       } catch (InputMismatchException e) {
-                           System.err.println("Bạn phải nhập số");
-                           sneakerManager.editEx();
-                       }
                        break;
                     case 3:
                         System.out.println("Nhập ID bạn muốn xóa : ");

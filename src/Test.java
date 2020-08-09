@@ -12,12 +12,11 @@ public class Test {
 
         boolean check = true;
         while (check) {
-            System.out.println("---Menu---");
+            System.out.println("Menu");
             System.out.println("1. Admin");
             System.out.println("0. Exit");
             System.out.println("Enter your choice (ENTER NUMBER): ");
 
-            try {
                 int choice = scanner.nextInt();
                 switch (choice) {
                     case 1:
@@ -32,10 +31,6 @@ public class Test {
                     case 0:
                         System.exit(0);
                     default:
-                }
-            } catch (InputMismatchException e ) {
-                System.err.println("Enter a number");
-                Test.scanner.nextLine();
             }
         }
     }

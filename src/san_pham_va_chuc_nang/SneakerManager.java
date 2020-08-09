@@ -29,16 +29,18 @@ public class SneakerManager implements Serializable {
 
     public void add() {
 
-        int idSp;
-        int count = 0;
-        for (int i = 0; i < sneakers.size(); i++){
-            if (count < sneakers.get(i).getId()) {
-                count = sneakers.get(i).getId();
-            }
-        }
-        idSp = count + 1;
-
-        System.out.println("Id sneaker : " + idSp);
+//        int idSp;
+//        int count = 0;
+//        for (int i = 0; i < sneakers.size(); i++){
+//            if (count < sneakers.get(i).getId()) {
+//                count = sneakers.get(i).getId();
+//            }
+//        }
+//        idSp = count + 1;
+//
+//        System.out.println("Id sneaker : " + idSp);
+        System.out.println("input id");
+        int id = Integer.parseInt(sc.nextLine());
         System.out.print("input name : ");
         String name = sc.nextLine();
         System.out.print("input amount : ");
@@ -49,7 +51,7 @@ public class SneakerManager implements Serializable {
         String brand = sc.nextLine();
         sc.nextLine();
 
-        Sneaker sneaker = new Sneaker(idSp, name, amount, price, brand);
+        Sneaker sneaker = new Sneaker(id, name, amount, price, brand);
         sneakers.add(sneaker);
         readAndWrite.writeFile(TOBI,sneakers);
     }
@@ -84,10 +86,10 @@ public class SneakerManager implements Serializable {
         }
     }
 
-    public void remove(int idSp) {
+    public void remove(int id) {
         Sneaker sneakerList = null;
         for (int i = 0; i < sneakers.size(); i++) {
-            if (sneakers.get(i).getId() == idSp) {
+            if (sneakers.get(i).getId() == id) {
                 sneakerList = sneakers.get(i);
                 break;
             }
@@ -97,7 +99,7 @@ public class SneakerManager implements Serializable {
             sneakers.remove(sneakerList);
             readAndWrite.writeFile(TOBI,sneakers);
         } else {
-            System.out.printf("Id = %d no thing.\n", idSp);
+            System.out.printf("Id = %d no thing.\n", id);
         }
     }
 
@@ -188,7 +190,7 @@ public class SneakerManager implements Serializable {
         String name = sc.nextLine();
         boolean isExited = false;
         for (Sneaker sneaker : sneakers) {
-            if ((sneaker.getName().toUpperCase().equals(name.toLowerCase()))) {
+            if (sneaker.getName().toUpperCase().equals(name.toUpperCase())) {
                 System.out.println(" Đôi giày có tên : " + name + " |" + " có mã sản phẩm : " + sneaker.getId() + " |" + " số lượng : " + sneaker.getAmount() +  " |" + " có giá : " + sneaker.getPrice() + " |" + " sản phẩm thuộc hãng : " + sneaker.getBrand());
                 isExited = true;
             }
