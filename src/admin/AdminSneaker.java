@@ -7,20 +7,13 @@ import java.util.Scanner;
 
 public class AdminSneaker {
     public static Scanner sc = new Scanner(System.in);
-    private static final String ONE = "1";
-    private static final String TWO = "2";
-    private static final String THREE = "3";
-    private static final String FOUR = "4";
-    private static final String FIVE = "5";
-    private static final String SIX = "6";
-    private static final String ZERO = "0";
 
     public void admin() {
         SneakerManager sneakerManager = new SneakerManager();
 
         boolean check = true;
         while (check) {
-            String choice;
+            int choice;
 
             System.out.println();
 
@@ -32,51 +25,52 @@ public class AdminSneaker {
             System.out.println("5. Sắp xếp sản phẩm : ");
             System.out.println("6. Tìm kiếm : ");
             System.out.println("0. Thoát : ");
+            System.out.println("Enter your choice (ENTER NUMBER): ");
 
 
             try {
-                choice = sc.nextLine();
+                choice = sc.nextInt();
                 switch (choice) {
-                    case ONE:
+                    case 1:
                        sneakerManager.show();
                         break;
-                    case TWO:
+                    case 2:
                        try {
                            sneakerManager.add();
                            sc.nextLine();
-                           System.out.println("Add to public");
+                           System.out.println("Đã thêm thành công");
                            System.out.println();
                        } catch (InputMismatchException e) {
-                           System.err.println("Enter a number");
+                           System.err.println("Bạn phải nhập số");
                            sneakerManager.editEx();
                        }
                        break;
-                    case THREE:
-                        System.out.println("Enter id remove : ");
+                    case 3:
+                        System.out.println("Nhập ID bạn muốn xóa : ");
                         sc.nextLine();
                         int stt = sc.nextInt();
                         sneakerManager.remove(stt);
                         break;
-                    case FOUR:
-                        System.out.println("Enter id edit : ");
+                    case 4:
+                        System.out.println("Nhập ID bạn muốn sửa : ");
                         sc.nextLine();
                         int stt2 = sc.nextInt();
                         sneakerManager.edit(stt2);
                         break;
-                    case FIVE:
+                    case 5:
                         sneakerManager.sort();
                         break;
-                    case SIX:
-                        System.out.println("Enter search :");
+                    case 6:
+                        System.out.println("Tìm kiếm  :");
                         sneakerManager.search();
                         break;
-                    case ZERO:
+                    case 0:
                         System.exit(0);
                     default:
                 }
 
             } catch (InputMismatchException e) {
-                System.err.println("Enter a number ");
+                System.err.println("Bạn phải nhập số : ");
                 AdminSneaker.sc.nextLine();
             }
         }

@@ -15,6 +15,7 @@ public class Test {
             System.out.println("---Menu---");
             System.out.println("1. Admin");
             System.out.println("0. Exit");
+            System.out.println("Enter your choice (ENTER NUMBER): ");
 
             try {
                 int choice = scanner.nextInt();

@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class SneakerManager implements Serializable {
     private static final String TOBI = "DATA/shose.txt";
-    private static String choice;
-    private static final String ONE = "1";
-    private static final String TWO = "2";
-    private static final String THREE = "3";
-    private static final String FOUR = "4";
-    private static final String ZERO = "0";
+//    private static String choice;
+//    private static final String ONE = "1";
+//    private static final String TWO = "2";
+//    private static final String THREE = "3";
+//    private static final String FOUR = "4";
+//    private static final String ZERO = "0";
     public static Scanner sc = new Scanner(System.in);
     private List<Sneaker> sneakers;
     private ReadAndWrite<Sneaker> readAndWrite;
@@ -110,48 +110,56 @@ public class SneakerManager implements Serializable {
                 System.out.println("MENU");
                 System.out.println("1. Sửa tên giày : ");
                 System.out.println("2. Sửa số lượng : ");
-                System.out.println("4. Sửa giá : ");
-                System.out.println("5. Sửa hãng : ");
+                System.out.println("3. Sửa giá : ");
+                System.out.println("4. Sửa hãng : ");
+                System.out.println("5. Sửa thành công !");
                 System.out.println("0. Kêt thúc");
 
+                int choice;
+                boolean check = true;
 
-                while (true) {
-                    String choice;
-                    choice = sc.nextLine();
+                while (check) {
+                    choice = sc.nextInt();
                     switch (choice) {
-                        case ONE:
-                            System.out.println("Rename sneaker : " + sneakers.get(i).getName()+ "Fort :"    );
+                        case 1:
+                            System.out.println("Sửa tên giày  : " + sneakers.get(i).getName()+ " Fort :"    );
                             sc.nextLine();
                             String SneakerName = sc.nextLine();
                             sneakers.get(i).setName(SneakerName);
-                            System.out.println("new rename sneaker :");
+                            System.out.println("Tên đã sửa:");
                             display(sneakers.get(i));
                             break;
-                        case TWO:
-                            System.out.println("Rename amount : " + sneakers.get(i).getAmount() + "Fort :");
+                        case 2:
+                            System.out.println("Sửa số lượng : " + sneakers.get(i).getAmount() + " Fort :");
                             sc.nextLine();
                             int SneakerAmount = sc.nextInt();
                             sneakers.get(i).setAmount(SneakerAmount);
-                            System.out.println("new amount sneaker :");
+                            System.out.println("Số lượng đã sửa :");
                             display(sneakers.get(i));
                             break;
-                        case THREE:
-                            System.out.println("Rename price : " + sneakers.get(i).getPrice() + "Fort :");
+                        case 3:
+                            System.out.println("Sửa giá : " + sneakers.get(i).getPrice() + " Fort :");
                             sc.nextLine();
                             int SneakerPrice = sc.nextInt();
                             sneakers.get(i).setPrice(SneakerPrice);
-                            System.out.println("new price sneaker :");
+                            System.out.println("Giá đã sửa :");
                             display(sneakers.get(i));
                             break;
-                        case FOUR:
-                            System.out.println("Rename brand : " + sneakers.get(i).getBrand()+ "Fort :");
+                        case 4:
+                            System.out.println("Sửa hãng : " + sneakers.get(i).getBrand()+ " Fort :");
                             sc.nextLine();
                             String SneakerBrand = sc.nextLine();
                             sneakers.get(i).setBrand(SneakerBrand);
-                            System.out.println("new brand sneaker :");
+                            System.out.println("Hãng sau khi sửa :");
                             display(sneakers.get(i));
                             break;
-                        case ZERO:
+                        case 5:
+                            System.out.println("Chỉnh sửa thành công !");
+                            System.out.println();
+                            sc.nextLine();
+                            check = false;
+                            break;
+                        case 0:
                             System.exit(0);
                         default:
                     }
@@ -177,7 +185,6 @@ public class SneakerManager implements Serializable {
     }
 
     public void search() {
-        Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
         boolean isExited = false;
         for (Sneaker sneaker : sneakers) {
@@ -196,16 +203,16 @@ public class SneakerManager implements Serializable {
        System.out.println("1. Sắp xếp theo tên :");
        System.out.println("2. Sắp xếp theo giá :");
        System.out.println("3. Thoát :");
-
-       choice = sc.nextLine();
+        int choice;
+       choice = sc.nextInt();
        switch (choice) {
-           case ONE:
+           case 1:
                sortName();
                break;
-           case TWO:
+           case 2:
                sortPrice();
                break;
-           case THREE:
+           case 3:
                System.exit(0);
                break;
            default:
