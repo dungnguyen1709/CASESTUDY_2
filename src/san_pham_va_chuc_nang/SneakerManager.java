@@ -110,11 +110,12 @@ public class SneakerManager implements Serializable {
                 isExit = true;
 
                 System.out.println("MENU");
-                System.out.println("1. Sửa tên giày : ");
-                System.out.println("2. Sửa số lượng : ");
-                System.out.println("3. Sửa giá : ");
-                System.out.println("4. Sửa hãng : ");
-                System.out.println("5. Sửa thành công !");
+                System.out.println("1. Sửa mã id : ");
+                System.out.println("2. Sửa tên giày : ");
+                System.out.println("3. Sửa số lượng : ");
+                System.out.println("4. Sửa giá : ");
+                System.out.println("5. Sửa hãng : ");
+                System.out.println("6. Hoàn thành !");
                 System.out.println("0. Kêt thúc");
 
                 int choice;
@@ -124,14 +125,22 @@ public class SneakerManager implements Serializable {
                     choice = sc.nextInt();
                     switch (choice) {
                         case 1:
-                            System.out.println("Sửa tên giày  : " + sneakers.get(i).getName()+ " Fort :"    );
+                            System.out.println("Sửa mã id : " + sneakers.get(i).getId()+ " Fort :" );
                             sc.nextLine();
-                            String SneakerName = sc.nextLine();
-                            sneakers.get(i).setName(SneakerName);
-                            System.out.println("Tên đã sửa:");
+                            int SneakerId = sc.nextInt();
+                            sneakers.get(i).setId(SneakerId);
+                            System.out.println("ID đã sửa :");
                             display(sneakers.get(i));
                             break;
                         case 2:
+                            System.out.println("Sửa tên giày  : " + sneakers.get(i).getName()+ " Fort :");
+                            sc.nextLine();
+                            String SneakerName = sc.nextLine();
+                            sneakers.get(i).setName(SneakerName);
+                            System.out.println("Tên đã sửa :");
+                            display(sneakers.get(i));
+                            break;
+                        case 3:
                             System.out.println("Sửa số lượng : " + sneakers.get(i).getAmount() + " Fort :");
                             sc.nextLine();
                             int SneakerAmount = sc.nextInt();
@@ -139,7 +148,7 @@ public class SneakerManager implements Serializable {
                             System.out.println("Số lượng đã sửa :");
                             display(sneakers.get(i));
                             break;
-                        case 3:
+                        case 4:
                             System.out.println("Sửa giá : " + sneakers.get(i).getPrice() + " Fort :");
                             sc.nextLine();
                             int SneakerPrice = sc.nextInt();
@@ -147,7 +156,7 @@ public class SneakerManager implements Serializable {
                             System.out.println("Giá đã sửa :");
                             display(sneakers.get(i));
                             break;
-                        case 4:
+                        case 5:
                             System.out.println("Sửa hãng : " + sneakers.get(i).getBrand()+ " Fort :");
                             sc.nextLine();
                             String SneakerBrand = sc.nextLine();
@@ -155,7 +164,7 @@ public class SneakerManager implements Serializable {
                             System.out.println("Hãng sau khi sửa :");
                             display(sneakers.get(i));
                             break;
-                        case 5:
+                        case 6:
                             System.out.println("Chỉnh sửa thành công !");
                             System.out.println();
                             sc.nextLine();
