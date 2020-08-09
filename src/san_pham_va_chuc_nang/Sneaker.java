@@ -6,18 +6,16 @@ public class Sneaker implements Serializable {
     private int id;
     private String name;
     private int amount;
-    private String size;
     private int price;
     private String brand;
 
     public Sneaker() {
     }
 
-    public Sneaker(int id, String name, int amount, String size, int price, String brand) {
+    public Sneaker(int id, String name, int amount, int price, String brand) {
         this.id = id;
         this.name = name;
         this.amount = amount;
-        this.size = size;
         this.price = price;
         this.brand = brand;
     }
@@ -46,14 +44,6 @@ public class Sneaker implements Serializable {
         this.amount = amount;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     public int getPrice() {
         return price;
     }
@@ -76,7 +66,6 @@ public class Sneaker implements Serializable {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", amount=" + amount +
-                ", size='" + size + '\'' +
                 ", price=" + price +
                 ", brand='" + brand + '\'' +
                 '}';

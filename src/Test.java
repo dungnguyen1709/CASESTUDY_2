@@ -3,8 +3,8 @@ import admin.AdminSneaker;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
-  public static  Scanner scanner = new Scanner(System.in);
+public class Test {
+   public static  Scanner scanner = new Scanner(System.in);
 
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class Main {
                         String acc = scanner.nextLine();
                         System.out.println("Password");
                         String pass = scanner.nextLine();
-                        adminSneaker.checkAdmin(acc,pass);
+                        adminSneaker.check(acc,pass);
                         break;
                     case 0:
                         System.exit(0);
@@ -34,7 +34,7 @@ public class Main {
                 }
             } catch (InputMismatchException e ) {
                 System.err.println("Enter a number");
-                Main.scanner.nextLine();
+                Test.scanner.nextLine();
             }
         }
     }

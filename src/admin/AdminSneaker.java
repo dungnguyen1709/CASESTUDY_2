@@ -15,14 +15,15 @@ public class AdminSneaker {
     private static final String SIX = "6";
     private static final String ZERO = "0";
 
-    public void adminManager() {
+    public void admin() {
         SneakerManager sneakerManager = new SneakerManager();
 
         boolean check = true;
         while (check) {
             String choice;
 
-            System.out.println("-------");
+            System.out.println();
+
             System.out.println(" MENU : ");
             System.out.println("1. Hiển thị danh sách sản phẩm : ");
             System.out.println("2. Thêm sản phẩm : ");
@@ -31,7 +32,7 @@ public class AdminSneaker {
             System.out.println("5. Sắp xếp sản phẩm : ");
             System.out.println("6. Tìm kiếm : ");
             System.out.println("0. Thoát : ");
-            System.out.println("-------");
+
 
             try {
                 choice = sc.nextLine();
@@ -81,10 +82,10 @@ public class AdminSneaker {
         }
     }
 
-    public void checkAdmin(String account ,String pass){
+    public void check(String account ,String pass){
         if (account.equals("admin")){
             if (pass.equals("admin")){
-                adminManager();
+                admin();
             }else {
                 System.out.println("Sai pass");
             }
