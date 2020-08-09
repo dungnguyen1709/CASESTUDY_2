@@ -72,8 +72,8 @@ public class AdminSneaker {
     }
 
     public void check(String account ,String pass){
-        if (account.equals("admin")){
-            if (pass.equals("admin")){
+        if (account.equals("tobi")){
+            if (pass.equals("tobi")){
                 admin();
             }else {
                 System.out.println("Sai pass");
