@@ -14,7 +14,6 @@ public class AdminSneaker {
         boolean check = true;
         while (check) {
             int choice;
-
             System.out.println();
 
             System.out.println(" MENU : ");
