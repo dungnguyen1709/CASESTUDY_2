@@ -9,12 +9,7 @@ import java.util.Scanner;
 
 public class SneakerManager implements Serializable {
     private static final String TOBI = "DATA/shose.txt";
-//    private static String choice;
-//    private static final String ONE = "1";
-//    private static final String TWO = "2";
-//    private static final String THREE = "3";
-//    private static final String FOUR = "4";
-//    private static final String ZERO = "0";
+
     public static Scanner sc = new Scanner(System.in);
     private List<Sneaker> sneakers;
     private ReadAndWrite<Sneaker> readAndWrite;
@@ -29,16 +24,6 @@ public class SneakerManager implements Serializable {
 
     public void add() {
 
-//        int idSp;
-//        int count = 0;
-//        for (int i = 0; i < sneakers.size(); i++){
-//            if (count < sneakers.get(i).getId()) {
-//                count = sneakers.get(i).getId();
-//            }
-//        }
-//        idSp = count + 1;
-//
-//        System.out.println("Id sneaker : " + idSp);
         System.out.println("input id");
         int id = Integer.parseInt(sc.nextLine());
         System.out.print("input name : ");

@@ -1,6 +1,5 @@
 import admin.AdminSneaker;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Test {
