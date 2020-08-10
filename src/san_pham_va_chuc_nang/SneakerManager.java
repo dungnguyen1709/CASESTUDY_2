@@ -41,9 +41,6 @@ public class SneakerManager implements Serializable {
         readAndWrite.writeFile(TOBI,sneakers);
     }
 
-//    public void editEx() {
-//        sc.nextLine();
-//    }
 
     public void show() {
         System.out.printf("| %1s", "");
