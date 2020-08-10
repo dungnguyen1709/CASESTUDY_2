@@ -21,7 +21,7 @@ public class Test {
                     case 1:
                         System.out.println("Log in");
                         scanner.nextLine();
-                        System.out.println("Account");
+                        System.out.println("User");
                         String acc = scanner.nextLine();
                         System.out.println("Password");
                         String pass = scanner.nextLine();
