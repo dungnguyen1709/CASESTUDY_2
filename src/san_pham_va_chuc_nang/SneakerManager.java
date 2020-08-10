@@ -80,11 +80,11 @@ public class SneakerManager implements Serializable {
             }
         }
         if (sneakerList != null) {
-            System.out.println(" delete sneaker : " + sneakerList.getName());
+            System.out.println(" Đã xóa : " + sneakerList.getName());
             sneakers.remove(sneakerList);
             readAndWrite.writeFile(TOBI,sneakers);
         } else {
-            System.out.printf("Id = %d no thing.\n", id);
+            System.out.printf("Id = %d Không tìm thấy .\n", id);
         }
     }
 
@@ -163,7 +163,7 @@ public class SneakerManager implements Serializable {
             }
         }
         if (!isExit) {
-            System.out.printf("Id = %d nothing.\n", id);
+            System.out.printf("Id = %d Không tìm thấy .\n", id);
         } else {
             readAndWrite.writeFile(TOBI,sneakers);
         }
