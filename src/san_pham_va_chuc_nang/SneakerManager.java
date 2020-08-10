@@ -213,21 +213,34 @@ public class SneakerManager implements Serializable {
        System.out.println("Chọn kiểu sắp xếp :");
        System.out.println("1. Sắp xếp theo tên :");
        System.out.println("2. Sắp xếp theo giá :");
-       System.out.println("3. Thoát :");
-        int choice;
-       choice = sc.nextInt();
-       switch (choice) {
-           case 1:
-               sortName();
-               break;
-           case 2:
-               sortPrice();
-               break;
-           case 3:
-               System.exit(0);
-               break;
-           default:
+       System.out.println("3. Sắp xếp theo id :");
+       System.out.println("4. Sắp xếp thành công!");
+       System.out.println("0. Thoát :");
+       int choice1;
+       boolean checked = true;
+       while (checked) {
+           choice1 = sc.nextInt();
+           switch (choice1) {
+               case 1:
+                   sortName();
+                   break;
+               case 2:
+                   sortPrice();
+                   break;
+               case 3:
+                   sortId();
+                   break;
+               case 4:
+                   System.out.println("Hoàn thành!");
+                   System.out.println();
+                   sc.nextLine();
+                   checked = false;
+                   break;
+               case 0:
+                   System.exit(0);
+               default:
 
+           }
        }
    }
 
@@ -245,6 +258,15 @@ public class SneakerManager implements Serializable {
             @Override
             public int compare(Sneaker o1, Sneaker o2) {
                 return (int) (o1.getPrice() - o2.getPrice());
+            }
+        });
+    }
+
+    void sortId() {
+        sneakers.sort(new Comparator<Sneaker>() {
+            @Override
+            public int compare(Sneaker o1, Sneaker o2) {
+                return (int) (o1.getId() - o2.getId());
             }
         });
     }
