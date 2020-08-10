@@ -10,10 +10,11 @@ public class ReadAndWrite<E> {
     public void writeFile(String TOBI,List<E> list) {
 
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(TOBI);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(list);
-            objectOutputStream.close();
+            FileOutputStream fos = new FileOutputStream(TOBI);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(list);
+            oos.close();
+            fos.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -25,10 +26,11 @@ public class ReadAndWrite<E> {
     public List<E> readFile(String TOBI) {
         List<E> list = new ArrayList<>();
         try {
-            FileInputStream fileInputStream = new FileInputStream(TOBI);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            list = (List<E>) objectInputStream.readObject();
-            objectInputStream.close();
+            FileInputStream fis = new FileInputStream(TOBI);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            list = (List<E>) ois.readObject();
+            ois.close();
+            fis.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

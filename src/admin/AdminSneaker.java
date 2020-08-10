@@ -36,8 +36,8 @@ public class AdminSneaker {
                         break;
                     case 2:
                            sneakerManager.add();
-                           sc.nextLine();
                            System.out.println("Đã thêm thành công");
+                           sc.nextLine();
                            System.out.println();
                        break;
                     case 3:
