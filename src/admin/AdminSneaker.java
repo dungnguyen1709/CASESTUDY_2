@@ -55,8 +55,10 @@ public class AdminSneaker {
                         sneakerManager.sort();
                         break;
                     case 6:
+                        sc.nextLine();
                         System.out.println("Tìm kiếm  :");
-                        sneakerManager.search();
+                        String key = sc.nextLine();
+                        sneakerManager.search(key);
                         break;
                     case 0:
                         System.exit(0);

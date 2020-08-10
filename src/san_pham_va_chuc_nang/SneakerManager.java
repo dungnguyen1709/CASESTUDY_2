@@ -3,9 +3,9 @@ package san_pham_va_chuc_nang;
 import doc_ghi_file.ReadAndWrite;
 
 import java.io.Serializable;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SneakerManager implements Serializable {
     private static final String TOBI = "DATA/shose.txt";
@@ -38,7 +38,7 @@ public class SneakerManager implements Serializable {
 
         Sneaker sneaker = new Sneaker(id, name, amount, price, brand);
         sneakers.add(sneaker);
-        readAndWrite.writeFile(TOBI,sneakers);
+        readAndWrite.writeFile(TOBI, sneakers);
     }
 
 
@@ -51,7 +51,7 @@ public class SneakerManager implements Serializable {
         System.out.printf("%-8s  |  ", "Số lượng");
         System.out.printf("%6s", "");
         System.out.printf("%-12s  |  ", "Giá giày");
-        System.out.printf("%3s","");
+        System.out.printf("%3s", "");
         System.out.printf("%-7s |  ", "Nhà sản xuất");
         System.out.println();
 
@@ -61,7 +61,7 @@ public class SneakerManager implements Serializable {
             System.out.printf("%-50s  |  ", list.getName());
             System.out.printf("%-10s  |  ", list.getAmount());
             System.out.printf("%-18s  |  ", list.getPrice());
-            System.out.printf("%3s","");
+            System.out.printf("%3s", "");
             System.out.printf("%-7s  |  ", list.getBrand());
             System.out.println();
 
@@ -79,7 +79,7 @@ public class SneakerManager implements Serializable {
         if (sneakerList != null) {
             System.out.println(" Đã xóa : " + sneakerList.getName());
             sneakers.remove(sneakerList);
-            readAndWrite.writeFile(TOBI,sneakers);
+            readAndWrite.writeFile(TOBI, sneakers);
         } else {
             System.out.printf("Id = %d Không tìm thấy .\n", id);
         }
@@ -107,7 +107,7 @@ public class SneakerManager implements Serializable {
                     choice = sc.nextInt();
                     switch (choice) {
                         case 1:
-                            System.out.println("Sửa mã id : " + sneakers.get(i).getId()+ " Fort :" );
+                            System.out.println("Sửa mã id : " + sneakers.get(i).getId() + " Fort :");
                             sc.nextLine();
                             int SneakerId = sc.nextInt();
                             sneakers.get(i).setId(SneakerId);
@@ -115,7 +115,7 @@ public class SneakerManager implements Serializable {
                             display(sneakers.get(i));
                             break;
                         case 2:
-                            System.out.println("Sửa tên giày  : " + sneakers.get(i).getName()+ " Fort :");
+                            System.out.println("Sửa tên giày  : " + sneakers.get(i).getName() + " Fort :");
                             sc.nextLine();
                             String SneakerName = sc.nextLine();
                             sneakers.get(i).setName(SneakerName);
@@ -139,7 +139,7 @@ public class SneakerManager implements Serializable {
                             display(sneakers.get(i));
                             break;
                         case 5:
-                            System.out.println("Sửa hãng : " + sneakers.get(i).getBrand()+ " Fort :");
+                            System.out.println("Sửa hãng : " + sneakers.get(i).getBrand() + " Fort :");
                             sc.nextLine();
                             String SneakerBrand = sc.nextLine();
                             sneakers.get(i).setBrand(SneakerBrand);
@@ -162,32 +162,79 @@ public class SneakerManager implements Serializable {
         if (!isExit) {
             System.out.printf("Id = %d Không tìm thấy .\n", id);
         } else {
-            readAndWrite.writeFile(TOBI,sneakers);
+            readAndWrite.writeFile(TOBI, sneakers);
         }
     }
 
     private void display(Sneaker sneaker) {
-        System.out.printf("|%3s","");
-        System.out.printf("%-3d  |   ",sneaker.getId());
-        System.out.printf("%-34s  |   ",sneaker.getName());
-        System.out.printf("%-10s  |   ",sneaker.getAmount());
-        System.out.printf("%-10s  |   ",sneaker.getPrice());
+        System.out.printf("|%3s", "");
+        System.out.printf("%-3d  |   ", sneaker.getId());
+        System.out.printf("%-34s  |   ", sneaker.getName());
+        System.out.printf("%-10s  |   ", sneaker.getAmount());
+        System.out.printf("%-10s  |   ", sneaker.getPrice());
         System.out.printf("%3s", "");
-        System.out.printf("%-7s  |   ",sneaker.getBrand());
+        System.out.printf("%-7s  |   ", sneaker.getBrand());
         System.out.println();
     }
 
-    public void search() {
-        String name = sc.nextLine();
-        boolean isExited = false;
-        for (Sneaker sneaker : sneakers) {
-            if (sneaker.getName().toUpperCase().equals(name.toUpperCase())) {
-                System.out.println(" Đôi giày có tên : " + name + " |" + " có mã sản phẩm : " + sneaker.getId() + " |" + " số lượng : " + sneaker.getAmount() +  " |" + " có giá : " + sneaker.getPrice() + " |" + " sản phẩm thuộc hãng : " + sneaker.getBrand());
-                isExited = true;
+    //    public void search() {
+//        String name = sc.nextLine();
+//        boolean isExited = false;
+//        for (Sneaker sneaker : sneakers) {
+//            if (sneaker.getName().toUpperCase().equals(name.toUpperCase())) {
+//                System.out.println(" Đôi giày có tên : " + name + " |" + " có mã sản phẩm : " + sneaker.getId() + " |" + " số lượng : " + sneaker.getAmount() +  " |" + " có giá : " + sneaker.getPrice() + " |" + " sản phẩm thuộc hãng : " + sneaker.getBrand());
+//                isExited = true;
+//            }
+//        }
+//        if (!isExited) {
+//            System.out.println("nothing sneaker " + name);
+//        }
+//    }
+    public boolean checkKey(String key, String input) {
+        key = key.toUpperCase();
+        String regex = ".*" + key + ".*";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input.toUpperCase());
+        return matcher.matches();
+    }
+
+    public void search(String key) {
+        List<Sneaker> searchSneaker = new ArrayList<>();
+        Iterator<Sneaker> iterator = sneakers.iterator();
+        while (iterator.hasNext()) {
+            Sneaker sneaker = iterator.next();
+            if (checkKey(key, sneaker.getName())) {
+                searchSneaker.add(sneaker);
             }
         }
-        if (!isExited) {
-            System.out.println("nothing sneaker " + name);
+        show2(searchSneaker);
+    }
+
+
+
+    public void show2(List<Sneaker> searchSneakers) {
+        System.out.printf("| %1s", "");
+        System.out.printf("%-4s  |  ", "Mã giày");
+        System.out.printf("%20s", "");
+        System.out.printf("%-30s  |  ", "Tên giày");
+        System.out.printf("%2s", "");
+        System.out.printf("%-8s  |  ", "Số lượng");
+        System.out.printf("%6s", "");
+        System.out.printf("%-12s  |  ", "Giá giày");
+        System.out.printf("%3s", "");
+        System.out.printf("%-7s |  ", "Nhà sản xuất");
+        System.out.println();
+
+        for (Sneaker sneaker : searchSneakers) {
+            System.out.printf("|%3s", "");
+            System.out.printf("%-3d  |  ", sneaker.getId());
+            System.out.printf("%-50s  |  ", sneaker.getName());
+            System.out.printf("%-10s  |  ", sneaker.getAmount());
+            System.out.printf("%-18s  |  ", sneaker.getPrice());
+            System.out.printf("%3s", "");
+            System.out.printf("%-7s  |  ", sneaker.getBrand());
+            System.out.println();
+
         }
     }
 
